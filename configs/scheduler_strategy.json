@@ -1,0 +1,39 @@
+{
+    "app_name" : "My App",
+    "strategy" :[
+        {
+        "stage_name" : "My Stage 1",
+        "workers" :[
+            {
+                "edge_id": "edge1",
+                "workers_count": 1,
+                "cpu": 0.5,
+                "memory": 0.5
+            },
+            {
+                "edge_id": "edge2",
+                "workers_count": 2,
+                "cpu": 0.8,
+                "memory": 0.8
+            }
+        ]
+        },
+        {
+        "stage_name" : "My Stage 2",
+        "workers" :[
+            {
+                "edge_id": "edge1",
+                "workers_count": 3,
+                "cpu": 0.5,
+                "memory": 0.5
+            },
+            {
+                "edge_id": "edge2",
+                "workers_count": 1,
+                "cpu": 0.8,
+                "memory": 0.8
+            }
+        ]
+        }
+    ]
+}

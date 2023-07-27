@@ -1,0 +1,20 @@
+{
+    "cloud_server": "192.168.0.1",
+    "cloud_port": 8765,
+    "edge_server_list": [
+        {
+            "edge_id": "edge1",
+            "edge_server": "192.168.0.2",
+            "edge_port": 8765
+        },
+        {
+            "edge_id": "edge2",
+            "edge_server": "192.168.0.3",
+            "edge_port": 8765
+        }
+    ],
+    "rabbitmq_config" : {
+        "username": "guest",
+        "password": "guest"
+    }
+}

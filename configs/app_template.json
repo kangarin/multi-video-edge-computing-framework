@@ -1,0 +1,79 @@
+{
+    "app_name" : "My App",
+    "video_streams": [
+        {
+            "name": "Production Line 1",
+            "url": "./input/input1.mp4",
+            "type": "video",
+            "edge_id": "edge1"
+        },
+        {
+            "name": "Production Line 2",
+            "url": "/dev/video0",
+            "type": "camera",
+            "edge_id": "edge2"
+        },
+        {
+            "name": "Production Line 3",
+            "url": "rtsp://something",
+            "type": "rtsp",
+            "edge_id": "edge3"
+        }
+    ],
+    "code_base_path": "./apps/myapp/",
+    "generator": {
+        "module": "my_generator",
+        "class": "MyGenerator",
+        "init_args": {
+            "arg1": "gen_value1",
+            "arg2": "gen_value2"
+        }
+    },
+    "integrator": {
+        "module": "my_integrator",
+        "class": "MyIntegrator",
+        "init_args": {
+            "arg1": "int_value1",
+            "arg2": "int_value2"
+        }
+    },
+    "stages" : [
+        {
+            "stage_name" : "My Stage 1",
+            "module": "my_stage_1",
+            "class": "MyStage1",
+            "init_args": {
+                "arg1": "value1",
+                "arg2": "value2"
+            }
+        },
+        {
+            "stage_name" : "My Stage 2",
+            "module": "my_stage_2",
+            "class": "MyStage2",
+            "init_args": {
+                "arg3": "value3",
+                "arg4": "value4"
+            }
+        },
+        {
+            "stage_name" : "My Stage 3",
+            "module": "my_stage_3",
+            "class": "MyStage3",
+            "init_args": {
+                "arg5": "value5",
+                "arg6": "value6"
+            }
+        },
+        {
+            "stage_name" : "My Stage 4",
+            "module": "my_stage_4",
+            "class": "MyStage4",
+            "init_args": {
+                "arg7": "value7",
+                "arg8": "value8"
+            }
+        }
+    ],
+    "rabbitmq_queue" : "my_queue"
+}
