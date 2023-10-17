@@ -1,4 +1,5 @@
 from apps.app_interface.generator_interface import GeneratorInterface
+from components.captures.capture_interface import CaptureInterface
 import cv2
 class MyGenerator(GeneratorInterface):
     def __init__(self, args = None):
@@ -7,15 +8,22 @@ class MyGenerator(GeneratorInterface):
         self.uid = uuid.uuid4()
         self.counter = 0
 
-    def bind(self, video_stream):
+    def bind(self, capture : CaptureInterface):
         # 绑定到一个视频流
-        self.video_stream = video_stream
-        print("bind to video stream : " + str(video_stream))
+        self.cap = capture
+        print("bind to video stream : " + str(self.cap))
 
     def __call__(self, args = None):
+        import time
+        import threading
         while True:
+            print("MyGenerator call" + threading.currentThread().getName())
+            time.sleep(5)
+            pass
+
             # 读取视频
             ret, frame = self.cap.read()
+            self.counter += 1
             
             if not ret:
                 break
@@ -33,6 +41,7 @@ class MyGenerator(GeneratorInterface):
             "frame": frame,
             "counter": self.counter
         }
+        print ("generate task : " + str(task))
         return task
     
     def event_detect(self, frame):

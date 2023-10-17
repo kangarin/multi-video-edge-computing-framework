@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+from components.captures.capture_interface import CaptureInterface
 
 class GeneratorInterface(ABC):
     @abstractmethod
@@ -6,7 +7,8 @@ class GeneratorInterface(ABC):
         pass
 
     @abstractmethod
-    def bind(self, video_stream):
+    def bind(self, capture : CaptureInterface):
+        # video_stream should be of type CaptureInterface
         pass
     
     @abstractmethod

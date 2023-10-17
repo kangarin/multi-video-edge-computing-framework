@@ -6,7 +6,10 @@ class MyIntegrator(IntegratorInterface):
         pass
 
     def __call__(self, args = None):
+        import time
         while True:
+            print("MyIntegrator call")
+            time.sleep(5)
             # 分别汇总多个视频流结果
             pass
 

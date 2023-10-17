@@ -3,21 +3,15 @@
     "video_streams": [
         {
             "name": "Production Line 1",
-            "url": "./input/input1.mp4",
+            "url": "/Volumes/Untitled/video/traffic-crossroad-1080p.mp4",
             "type": "file",
             "edge_id": "edge1"
         },
         {
             "name": "Production Line 2",
-            "url": "/dev/video0",
-            "type": "camera",
+            "url": "/Volumes/Untitled/video/traffic-india-720p.mp4",
+            "type": "file",
             "edge_id": "edge2"
-        },
-        {
-            "name": "Production Line 3",
-            "url": "rtsp://something",
-            "type": "rtsp",
-            "edge_id": "edge3"
         }
     ],
     "code_base_path": "./apps/myapp/",

@@ -1,5 +1,7 @@
 import sys
-
+import threading
+from components.captures.file_capture import FileCapture
+from components.captures.camera_capture import CameraCapture
 # 应用原型，各个阶段可能需要多个线程实例执行
 class AppPrototype:
     def __init__(self, config):
@@ -8,7 +10,7 @@ class AppPrototype:
         self.stages = []
         self.generators = []
         self.integrator = None
-        
+
         self.load_video_streams()
         self.load_stages()
         self.bind_generators_to_video_streams()
@@ -28,11 +30,17 @@ class AppPrototype:
 
     def load_video_streams(self):
         for video_stream_config in self.config["video_streams"]:
-            name = video_stream_config["name"]
-            url = video_stream_config["url"]
             type = video_stream_config["type"]
-            edge_id = video_stream_config["edge_id"]
-            self.video_streams.append((name, url, type, edge_id))
+            video_stream = None
+            if type == "file":
+                video_stream = FileCapture(video_stream_config)
+            elif type == "rtsp":
+                pass
+            elif type == "http":
+                pass
+            else:
+                pass
+            self.video_streams.append(video_stream)
         print(self.video_streams)
 
     def load_generator(self):
@@ -58,11 +66,15 @@ class AppPrototype:
             gen = self.load_generator()
             gen.bind(video_stream)
             self.generators.append(gen)
+    
 
     def run(self):
         for generator in self.generators:
-            generator()
+            # start a thread for each generator
+            generator_thread = threading.Thread(target=generator)
+            generator_thread.start()
         for stage in self.stages:
             print(stage[0])
             stage[1](None)
-        self.integrator()
+        integrator_thread = threading.Thread(target=self.integrator)
+        integrator_thread.start()
